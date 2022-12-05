@@ -1,140 +1,147 @@
 <!doctype html>
 <html>
+
 <head>
-<style>
-  /* Style the slideshow container */
-  .slideshow-container {
-    max-width: 1000px;
-    position: relative;
-    margin: auto;
-  }
+    <style>
+        /* Style the slideshow container */
+        .slideshow-container {
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+        }
 
-  /* Next & previous buttons */
-  .prev, .next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    margin-top: -22px;
-    padding: 16px;
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-  }
+        /* Next & previous buttons */
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            margin-top: -22px;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
 
-  /* Position the "next button" to the right */
-  .next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-  }
+        /* Position the "next button" to the right */
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
 
-  /* On hover, add a black background color with a little bit see-through */
-  .prev:hover, .next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-  }
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
 
-  /* The dot/bullet/indicator container */
-  .dot-container {
-    text-align: center;
-    padding: 20px;
-    background: #ddd;
-  }
+        /* The dot/bullet/indicator container */
+        .dot-container {
+            text-align: center;
+            padding: 20px;
+            background: #ddd;
+        }
 
-  /* The dots/bullets/indicators */
-  .dot {
-    cursor: pointer;
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.6s ease;
-  }
+        /* The dots/bullets/indicators */
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
 
-  /* Add a background color to the active dot/circle */
-  .active, .dot:hover {
-    background-color: #717171;
-  }
+        /* Add a background color to the active dot/circle */
+        .active,
+        .dot:hover {
+            background-color: #717171;
+        }
 
-  /* Add an italic font style to all quotes */
-  q {
-    font-style: italic;
-  }
+        /* Add an italic font style to all quotes */
+        q {
+            font-style: italic;
+        }
 
-  /* Add a blue color to the author */
-  .author {
-    color: cornflowerblue;
-  }
-</style>
+        /* Add a blue color to the author */
+        .author {
+            color: cornflowerblue;
+        }
+
+    </style>
 </head>
+
 <body>
 
-<h1>Slideshow of Images from a GitHub Repo</h1>
+    <h1>Slideshow of Images from a GitHub Repo</h1>
 
-<!-- The slideshow container -->
-<div class="slideshow-container">
+    <!-- The slideshow container -->
+    <div class="slideshow-container">
 
-  <!-- Full-width images with number and caption text -->
-  <div class="mySlides">
-    <img src="https://github.com/dangoldin/memes/raw/main/exchange-on-graviton-spot.png" style="width:100%" id="slide" style="display:block">
-    <!-- <p>Caption for image 1</p> -->
-  </div>
+        <!-- Full-width images with number and caption text -->
+        <div class="mySlides">
+            <img src="https://github.com/dangoldin/memes/raw/main/exchange-on-graviton-spot.png" style="width:100%"
+                id="slide" style="display:block">
+            <!-- <p>Caption for image 1</p> -->
+        </div>
 
-  <!-- Next and previous buttons -->
-  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-  <a class="next" onclick="plusSlides(1)">&#10095;</a>
-</div>
+        <!-- Next and previous buttons -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
 
-<!-- The dots/circles -->
-<!-- <div class="dot-container">
+    <!-- The dots/circles -->
+    <!-- <div class="dot-container">
   <span class="dot" onclick="currentSlide(1)"></span>
   <span class="dot" onclick="currentSlide(2)"></span>
   <span class="dot" onclick="currentSlide(3)"></span>
 </div> -->
 
-<!-- Image-based slideshow scripts -->
-<script>
-    var images = [];
+    <!-- Image-based slideshow scripts -->
+    <script>
+        var images = [];
 
-    fetch("https://github.com/dangoldin/memes/raw/master/images.json")
-    .then(response => response.json())
-    .then(data => {
-        images = data;
+        fetch("/images.json")
+            .then(response => response.json())
+            .then(data => {
+                images = data;
 
-      // Set the src and alt attributes for the first image
-      document.getElementById("slide").src = "https://github.com/dangoldin/memes/raw/main/" + images[0];
-    //   document.getElementById("slide1").alt = images[0].alt;
-    //   document.getElementById("caption1").innerHTML = images[0].caption;
+                // Set the src and alt attributes for the first image
+                document.getElementById("slide").src = "/images/" + images[0];
+                //   document.getElementById("slide1").alt = images[0].alt;
+                //   document.getElementById("caption1").innerHTML = images[0].caption;
 
-    });
+            });
 
-  var slideIndex = 0;
-  showSlides(slideIndex);
+        var slideIndex = 0;
+        showSlides(slideIndex);
 
-  // Next/previous controls
-  function plusSlides(n) {
-    slideIndex += n;
-    showSlides(slideIndex);
-  }
+        // Next/previous controls
+        function plusSlides(n) {
+            slideIndex += n;
+            showSlides(slideIndex);
+        }
 
-  // Thumbnail image controls
-  function currentSlide(n) {
-    showSlides(slideIndex = n);
-  }
+        // Thumbnail image controls
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
 
-  function showSlides(n) {
-    var i;
-    var dots = document.getElementsByClassName("dot");
-    if (n > images.length) {slideIndex = 0} // Set to first
-    if (n < 0) {slideIndex = images.length-1} // Set to last
+        function showSlides(n) {
+            var i;
+            var dots = document.getElementsByClassName("dot");
+            if (n > images.length) { slideIndex = 0 } // Set to first
+            if (n < 0) { slideIndex = images.length - 1 } // Set to last
 
-    document.getElementById("slide").src = "https://github.com/dangoldin/memes/raw/main/" + images[slideIndex];
-  }
-</script>
+            document.getElementById("slide").src = "/images/" + images[slideIndex];
+        }
+    </script>
 
 </body>
 </html>
