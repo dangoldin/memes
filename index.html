@@ -107,13 +107,13 @@
     <script>
         var images = [];
 
-        fetch("/images.json")
+        fetch("images.json")
             .then(response => response.json())
             .then(data => {
                 images = data;
 
                 // Set the src and alt attributes for the first image
-                document.getElementById("slide").src = "/images/" + images[0];
+                document.getElementById("slide").src = "images/" + images[0];
                 //   document.getElementById("slide1").alt = images[0].alt;
                 //   document.getElementById("caption1").innerHTML = images[0].caption;
 
@@ -139,7 +139,7 @@
             if (n > images.length) { slideIndex = 0 } // Set to first
             if (n < 0) { slideIndex = images.length - 1 } // Set to last
 
-            document.getElementById("slide").src = "/images/" + images[slideIndex];
+            document.getElementById("slide").src = "images/" + images[slideIndex];
         }
     </script>
 
